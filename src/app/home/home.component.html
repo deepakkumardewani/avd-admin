@@ -1,0 +1,11 @@
+<input type="file" ng2FileSelect [uploader]="uploader" multiple />
+
+<div *ngFor="let item of uploader.queue">
+  <div>{{item?.file?.name}}</div>
+</div>
+
+
+<button type="button" class="btn btn-success btn-s"
+(click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+<span class="glyphicon glyphicon-upload"></span> Upload all
+</button>
