@@ -1,0 +1,22 @@
+<!-- <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (onFileDrop)="onFileDrop($event)" (fileOver)="fileOverBase($event)"
+  [uploader]="uploader" class="my-drop-zone" [style.zIndex]="zIndex">
+  <input type="file" ng2FileSelect [uploader]="uploader" />
+</div> -->
+
+<mat-card class="quote-card">
+  <mat-card-content>
+    <div class="image-input">
+      <input type="file" ng2FileSelect [uploader]="uploader" />
+      <img src="" *ngIf="uploader.queue.length !== 0" imgPreview [image]="uploader.queue[0]?._file" class="quote-image" />
+    </div>
+    <div class="quote-text">
+      <mat-form-field class="example-full-width">
+        <textarea matInput enabled placeholder="Quote Text" maxRows="3" [(ngModel)]="value"></textarea>
+      </mat-form-field>
+    </div>
+
+    <button class="upload-button" mat-raised-button color="primary" (click)="upload(value)">Upload</button>
+  </mat-card-content>
+</mat-card>
+
+
