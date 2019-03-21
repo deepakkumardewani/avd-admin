@@ -1,0 +1,60 @@
+<div class="create-button pull-right">
+  <button mat-raised-button color="primary" (click)="createEvent()">Create Event</button>
+</div>
+
+<div class="info" *ngIf="events?.length === 0">
+  <div class="upload-icon">
+    <img [ngStyle]="{ 'width': '100px' }" src="../../assets/images/no-files.png" alt="">
+  </div>
+  <h3>Create a new event by clicking on the button</h3>
+</div>
+
+
+
+<div class="gallery-table">
+  <table *ngIf="events?.length !== 0" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- image Column -->
+    <ng-container matColumnDef="thumbnail">
+      <th mat-header-cell *matHeaderCellDef> Thumbnail </th>
+      <td mat-cell *matCellDef="let element">
+        <img [src]="element?.imageUrls[0]" class="table-image" />
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element?.title}} </td>
+    </ng-container>
+
+    <!-- Images Column -->
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef> Images </th>
+      <td mat-cell *matCellDef="let element">{{element?.imageUrls?.length}}</td>
+    </ng-container>
+
+    <!-- Videos Column -->
+    <ng-container matColumnDef="video">
+      <th mat-header-cell *matHeaderCellDef> Videos </th>
+      <td mat-cell *matCellDef="let element">{{element?.videoUrls?.length}}</td>
+    </ng-container>
+
+    <!-- Date Column -->
+    <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element">{{element?.videoUrls?.length}}</td>
+      </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon class="edit-button" (click)="editEvent(element)">edit</mat-icon>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
