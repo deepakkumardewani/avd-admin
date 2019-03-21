@@ -1,0 +1,30 @@
+.mat-menu-item {
+  outline-style:none !important;
+}
+
+.toolbar {
+  background: #eee;
+  // position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100% !important;
+  // display: flex;
+  z-index: 10;
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+
+  .nav-buttons {
+    margin-right: 45px;
+    margin-left: auto;
+  }
+
+  .darshan-active, .quotes-active, .audio-active, .gallery-active {
+    color: red;
+    background: white;
+  }
+}
+
+.navigation-title {
+  font-family: 'Dosis', Trebuchet MS, Helvetica, Arial, sans-serif;
+  margin-left: 15px;
+}
