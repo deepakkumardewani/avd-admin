@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { environment } from 'src/environments/environment';
 
-const URL = `${environment.serverUrl}/lecture/audio/daily`;
+const URL = `${environment.serverUrl}/lectures/audio/daily`;
 
 @Component({
   selector: 'app-audio',
@@ -12,8 +12,7 @@ const URL = `${environment.serverUrl}/lecture/audio/daily`;
 export class AudioComponent {
   public uploader: FileUploader = new FileUploader({
     url: URL,
-    itemAlias: 'upload'
-    // removeAfterUpload: true
+    itemAlias: 'upload',
   });
   public hasBaseDropZoneOver = false;
 
