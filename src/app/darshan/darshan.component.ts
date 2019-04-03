@@ -17,7 +17,8 @@ export class DarshanComponent implements OnInit {
   }
   public uploader: FileUploader = new FileUploader({
     url: URL,
-    itemAlias: 'upload'
+    itemAlias: 'upload',
+    allowedMimeType: ['image/png', 'image/jpeg']
     // removeAfterUpload: true
   });
   public hasBaseDropZoneOver = false;
