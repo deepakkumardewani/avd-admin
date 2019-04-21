@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DarshanComponent } from './darshan/darshan.component';
 import { QuotesComponent } from './quotes/quotes.component';
-import { AudioComponent } from './audio/audio.component';
+import { AudioComponent, WarningSnackBarComponent } from './audio/audio.component';
 import { FileSizePipe } from './file-size.pipe';
 import { EventsComponent } from './events/events.component';
 import { FormsModule } from '@angular/forms';
@@ -28,6 +28,7 @@ import { HelperService } from './helper.service';
     DarshanComponent,
     QuotesComponent,
     AudioComponent,
+    WarningSnackBarComponent,
     EventsComponent,
     ImagePreviewDirective,
     FileSizePipe,
@@ -45,7 +46,7 @@ import { HelperService } from './helper.service';
 
   ],
   providers: [ HelperService ],
-  entryComponents: [GalleryModalComponent],
+  entryComponents: [GalleryModalComponent, WarningSnackBarComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
