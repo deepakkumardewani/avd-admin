@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:deploy": "ng build --prod --deploy-url /admin/ && sh ./src/deploy.sh"
+    "build:deploy": "ng build --prod --base-href /admin/ && sh ./src/deploy.sh"
   },
   "private": true,
   "dependencies": {
