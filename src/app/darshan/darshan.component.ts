@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 const URL = `${environment.serverUrl}/photos/dailyDarshan`;
 
@@ -12,7 +13,10 @@ const URL = `${environment.serverUrl}/photos/dailyDarshan`;
 })
 export class DarshanComponent implements OnInit {
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private deviceService: DeviceDetectorService
+    ) {
 
   }
   public uploader: FileUploader = new FileUploader({
@@ -27,6 +31,11 @@ export class DarshanComponent implements OnInit {
   dataSource = this.uploader.queue;
 
   zIndex = -1;
+  isMobile: boolean;
+
+  ngOnInit() {
+    this.isMobile = this.deviceService.isMobile();
+  }
 
   public fileOverBase(e: any): void {
     if (e) {
@@ -60,5 +69,5 @@ export class DarshanComponent implements OnInit {
     return this.http.delete('http://localhost:3050/photos/dailyDarshan');
   }
 
-  ngOnInit() {}
+
 }

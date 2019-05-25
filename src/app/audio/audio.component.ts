@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {MatSnackBar} from '@angular/material';
+import { MatSnackBar } from '@angular/material';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 import { FileUploader, FileItem } from 'ng2-file-upload';
 import { environment } from 'src/environments/environment';
@@ -22,7 +23,7 @@ export class WarningSnackBarComponent {}
   templateUrl: './audio.component.html',
   styleUrls: ['./audio.component.scss']
 })
-export class AudioComponent {
+export class AudioComponent implements OnInit {
   public uploader: FileUploader = new FileUploader({
     url: URL,
     itemAlias: 'upload',
@@ -37,13 +38,23 @@ export class AudioComponent {
   audioTitle: string;
   durationInSeconds = 5;
 
-  constructor(private snackBar: MatSnackBar) {
+  isMobile: boolean;
+
+
+  constructor(
+    private snackBar: MatSnackBar,
+    private deviceService: DeviceDetectorService
+    ) {
     this.uploader.onBeforeUploadItem = (item: any) => {
       this.audioTitle = item.file.name.substr(0, item.file.name.indexOf(' '));
       this.uploader.options.headers = [
         { name: 'audiotitle', value: this.audioTitle }
       ];
     };
+  }
+
+  ngOnInit() {
+    this.isMobile = this.deviceService.isMobile();
   }
 
   public fileOverBase(e: any): void {
