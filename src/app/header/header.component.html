@@ -1,11 +1,11 @@
 <div class="toolbar">
   <mat-toolbar color="primary">
-    <h1>Anand Vrindavan Dham</h1>
+    <span [ngClass]="{'heading-mobile': isMobile, 'heading-desktop': !isMobile}">Anand Vrindavan Dham</span>
 
     <span class="nav-buttons">
-      <button mat-button [disableRipple]="true" routerLinkActive="darshan-active" routerLink="/darshan">Darshan</button>
+      <button [ngClass]="{'button-mobile': isMobile, 'button-desktop': !isMobile}" mat-button [disableRipple]="true" routerLinkActive="darshan-active" routerLink="/darshan">Darshan</button>
       <!-- <button mat-button [disableRipple]="true" routerLinkActive="quotes-active" routerLink="/quotes">Quotes</button> -->
-      <button mat-button [disableRipple]="true" routerLinkActive="audio-active" routerLink="/audio" >Audio</button>
+      <button [ngClass]="{'button-mobile': isMobile, 'button-desktop': !isMobile}" mat-button [disableRipple]="true" routerLinkActive="audio-active" routerLink="/audio" >Audio</button>
       <!-- <button mat-button [disableRipple]="true" routerLinkActive="event-active" routerLink="/events" >Events</button> -->
       <!-- <button mat-button [disableRipple]="true" routerLinkActive="gallery-active" routerLink="/gallery" >Gallery</button> -->
 
@@ -14,7 +14,8 @@
 </div>
 
 <div class="title-heading">
-  <h1 class="navigation-title">{{title}}</h1>
+  <h1 *ngIf="!isMobile" class="navigation-title">{{title}}</h1>
+  <h3 *ngIf="isMobile" class="navigation-title">{{title}}</h3>
   <mat-divider></mat-divider>
 </div>
 
