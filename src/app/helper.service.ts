@@ -15,4 +15,8 @@ export class HelperService {
    saveAlbum(body) {
      return this.http.post(`${environment.serverUrl}/photos/save/album`, body);
    }
+
+   sendNotification(body) {
+     return this.http.post(`${environment.serverUrl}/notification`, body);
+   }
 }
