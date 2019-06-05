@@ -1,3 +1,4 @@
+import { HelperService } from './../helper.service';
 import { Component, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { HttpClient } from '@angular/common/http';
@@ -15,7 +16,8 @@ export class DarshanComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private deviceService: DeviceDetectorService
+    private deviceService: DeviceDetectorService,
+    private helper: HelperService
     ) {
 
   }
@@ -35,6 +37,14 @@ export class DarshanComponent implements OnInit {
 
   ngOnInit() {
     this.isMobile = this.deviceService.isMobile();
+    this.uploader.onCompleteAll = () => {
+      const body = {
+        title: 'Hare Krishna',
+        subtitle: `Daily darshan is now available`,
+        page: '/tabs/tab2'
+      };
+      this.helper.sendNotification(body).subscribe();
+    };
   }
 
   public fileOverBase(e: any): void {
@@ -68,6 +78,5 @@ export class DarshanComponent implements OnInit {
   deleteImages() {
     return this.http.delete('http://localhost:3050/photos/dailyDarshan');
   }
-
 
 }
