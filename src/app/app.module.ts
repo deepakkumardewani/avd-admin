@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,10 +18,10 @@ import { HomeComponent } from './home/home.component';
 import { DarshanComponent } from './darshan/darshan.component';
 import { QuotesComponent } from './quotes/quotes.component';
 import { AudioComponent, WarningSnackBarComponent } from './audio/audio.component';
+import { AudioListComponent } from './audio-list/audio-list.component';
 import { FileSizePipe } from './file-size.pipe';
 import { EventsComponent } from './events/events.component';
 import { GalleryComponent, GalleryModalComponent } from './gallery/gallery.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { GalleryComponent, GalleryModalComponent } from './gallery/gallery.compo
     DarshanComponent,
     QuotesComponent,
     AudioComponent,
+    AudioListComponent,
     WarningSnackBarComponent,
     EventsComponent,
     ImagePreviewDirective,
