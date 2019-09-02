@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
+import {MAT_SNACK_BAR_DATA} from '@angular/material/snack-bar';
+
 import { DeviceDetectorService } from 'ngx-device-detector';
 
 import { FileUploader, FileItem } from 'ng2-file-upload';
@@ -16,7 +18,9 @@ const URL = `${environment.serverUrl}/lectures/audio/daily`;
     }
   `],
 })
-export class WarningSnackBarComponent {}
+export class WarningSnackBarComponent {
+  constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any) {}
+}
 
 @Component({
   selector: 'app-audio',
@@ -27,7 +31,8 @@ export class AudioComponent implements OnInit {
   public uploader: FileUploader = new FileUploader({
     url: URL,
     itemAlias: 'upload',
-    maxFileSize: 15 * 1024 * 1024 // 15 MB
+    maxFileSize: 15 * 1024 * 1024, // 15 MB
+    allowedMimeType: ['audio/mp3']
   });
   public hasBaseDropZoneOver = false;
 
@@ -66,9 +71,13 @@ export class AudioComponent implements OnInit {
   }
 
   public onFileDrop(e: any): void {
+    if (e[0].type !== 'audio/mp3') {
+        this.openSnackBar('Please upload only mp3 files!');
+      }
+
     const size = e[0].size / 1024 / 1024;
     if (size > 15) {
-      this.openSnackBar();
+      this.openSnackBar('File size should be less than 15 MB');
     }
     this.uploader.queue.map(file => {
       if (file.isSuccess) {
@@ -87,9 +96,10 @@ export class AudioComponent implements OnInit {
     this.uploader.uploadAll();
   }
 
-  openSnackBar() {
+  openSnackBar(message) {
     this.snackBar.openFromComponent(WarningSnackBarComponent, {
       duration: this.durationInSeconds * 1000,
+      data: message
     });
   }
 }
