@@ -32,7 +32,7 @@ export class AudioComponent implements OnInit {
     url: URL,
     itemAlias: 'upload',
     maxFileSize: 15 * 1024 * 1024, // 15 MB
-    allowedMimeType: ['audio/mp3']
+    allowedMimeType: ['audio/mp3', 'audio/mpeg']
   });
   public hasBaseDropZoneOver = false;
 
@@ -71,9 +71,14 @@ export class AudioComponent implements OnInit {
   }
 
   public onFileDrop(e: any): void {
-    if (e[0].type !== 'audio/mp3') {
-        this.openSnackBar('Please upload only mp3 files!');
-      }
+    // if (e[0].type !== 'audio/mp3' || e[0].type !== 'audio/mpeg') {
+    //     this.openSnackBar('Please upload only mp3 files!');
+    //   }
+
+    if (!(/(mp3|mpeg)/.test(e[0].type))) {
+      console.error(`${e[0].type} is not a supported file type`);
+      this.openSnackBar('Please upload only mp3 files!');
+    }
 
     const size = e[0].size / 1024 / 1024;
     if (size > 15) {
@@ -85,6 +90,7 @@ export class AudioComponent implements OnInit {
       }
     });
     this.dataSource = [...this.uploader.queue];
+
   }
 
   removeFile(item) {
