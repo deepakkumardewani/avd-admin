@@ -11,6 +11,8 @@ import {
 export class HelperService {
 
   allAudioUrl = `${environment.serverUrl}/lectures/audio`;
+  dailyDarshanUrl = `${environment.serverUrl}/photos/dailyDarshan`;
+
   constructor(private http: HttpClient) {}
 
    getAlbums() {
@@ -32,6 +34,14 @@ export class HelperService {
     .pipe(
        catchError(this.handleError)
      );
+  }
+
+  getDarshan() {
+    return this.http.get(this.dailyDarshanUrl);
+  }
+
+  deleteDarshan(id) {
+    return this.http.delete(`${this.dailyDarshanUrl}?id=${id}`);
   }
   handleError(error) {
     let errorMessage = '';

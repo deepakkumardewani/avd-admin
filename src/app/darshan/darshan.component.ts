@@ -37,14 +37,14 @@ export class DarshanComponent implements OnInit {
 
   ngOnInit() {
     this.isMobile = this.deviceService.isMobile();
-    this.uploader.onCompleteAll = () => {
-      const body = {
-        title: 'Hare Krishna',
-        subtitle: `Daily darshan is now available`,
-        page: '/tabs/tab2'
-      };
-      this.helper.sendNotification(body).subscribe();
-    };
+    // this.uploader.onCompleteAll = () => {
+    //   const body = {
+    //     title: 'Hare Krishna',
+    //     subtitle: `Daily darshan is now available`,
+    //     page: '/tabs/tab2'
+    //   };
+    //   this.helper.sendNotification(body).subscribe();
+    // };
   }
 
   public fileOverBase(e: any): void {

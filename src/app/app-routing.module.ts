@@ -7,6 +7,7 @@ import { DarshanComponent } from './darshan/darshan.component';
 import { QuotesComponent } from './quotes/quotes.component';
 import { AudioComponent } from './audio/audio.component';
 import { AudioListComponent } from './audio-list/audio-list.component';
+import { DarshanListComponent } from './darshan-list/darshan-list.component'
 
 const routes: Routes = [
   { path: '', redirectTo: 'darshan', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'audio', component: AudioComponent, data: {title: 'Audio'}},
   { path: 'audio-list', component: AudioListComponent, data: {title: 'AudioList'}},
   { path: 'darshan', component: DarshanComponent, data: {title: 'Darshan'}},
+  { path: 'darshan-list', component: DarshanListComponent, data: {title: 'DarshanList'}},
   { path: 'events', component: EventsComponent, data: {title: 'Events'}},
   { path: 'gallery', component: GalleryComponent, data: {title: 'Gallery'}},
   { path: '**', redirectTo: 'darshan' }

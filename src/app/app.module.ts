@@ -22,34 +22,43 @@ import { AudioListComponent } from './audio-list/audio-list.component';
 import { FileSizePipe } from './file-size.pipe';
 import { EventsComponent } from './events/events.component';
 import { GalleryComponent, GalleryModalComponent } from './gallery/gallery.component';
+import { DarshanListComponent } from './darshan-list/darshan-list.component';
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    HeaderComponent,
-    DarshanComponent,
-    QuotesComponent,
-    AudioComponent,
-    AudioListComponent,
-    WarningSnackBarComponent,
-    EventsComponent,
-    ImagePreviewDirective,
-    FileSizePipe,
-    GalleryComponent,
-    GalleryModalComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FileUploadModule,
-    MaterialModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    DeviceDetectorModule.forRoot()
-  ],
-  providers: [ HelperService ],
-  entryComponents: [GalleryModalComponent, WarningSnackBarComponent],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      HomeComponent,
+      HeaderComponent,
+      DarshanComponent,
+      QuotesComponent,
+      AudioComponent,
+      AudioListComponent,
+      WarningSnackBarComponent,
+      EventsComponent,
+      ImagePreviewDirective,
+      FileSizePipe,
+      GalleryComponent,
+      GalleryModalComponent,
+      DarshanListComponent
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      FileUploadModule,
+      MaterialModule,
+      BrowserAnimationsModule,
+      FormsModule,
+      HttpClientModule,
+      DeviceDetectorModule.forRoot()
+   ],
+   providers: [
+      HelperService
+   ],
+   entryComponents: [
+      GalleryModalComponent,
+      WarningSnackBarComponent
+   ],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }
